@@ -1,6 +1,6 @@
 class CreateQuestionVotes < ActiveRecord::Migration
   def change
-    create_table :votes do |t|
+    create_table :question_votes do |t|
       t.belongs_to :user
       t.belongs_to :question
     end
