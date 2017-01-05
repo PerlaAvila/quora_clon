@@ -3,9 +3,9 @@ get '/' do
   @questions = Question.all
 
   if session[:id] != nil
-  @user = User.find(session[:id])
+     @user = User.find(session[:id])
   end
-  erb :index
+   erb :index
 end
 
 post '/log_in' do
@@ -57,8 +57,8 @@ end
   end
 
 get '/users_home/:id' do
- @user = User.find(session[:id])
- erb :profile
+   @user = User.find(session[:id])
+   erb :profile
 end
 
 
