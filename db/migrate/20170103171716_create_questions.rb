@@ -1,7 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :question
+      t.string :body
       t.belongs_to :user
       t.integer :votes, default: 0
       t.timestamps

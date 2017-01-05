@@ -1,7 +1,10 @@
 
 get '/' do
-  # La siguiente linea hace render de la vista 
-  # que esta en app/views/index.erb
+  @questions = Question.all
+
+  if session[:id] != nil
+  @user = User.find(session[:id])
+  end
   erb :index
 end
 
@@ -16,7 +19,7 @@ post '/log_in' do
     redirect to "/users_home/#{@user.id}"
 
   else
-    redirect to '/log_in'
+    erb :errors
   end
 
 end
@@ -46,6 +49,7 @@ post '/new_user' do
 
 end
  
+
  before '/users_home/:id'  do
     if session[:id] == nil
       redirect to '/log_in'
@@ -56,6 +60,7 @@ get '/users_home/:id' do
  @user = User.find(session[:id])
  erb :profile
 end
+
 
 
 

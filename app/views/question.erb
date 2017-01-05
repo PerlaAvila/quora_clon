@@ -1,0 +1,22 @@
+<h2><%= @question.body %></h2>
+<% if @question.answers.empty? %>
+<p> No answers yet </p>
+<% else %>
+<h3>Answers: </h3>
+<% @question.answers.each do |ans| %>
+
+  <p id="ans"><%= ans.answer_body %></p>
+<% end %>
+<% end %>
+<form id="question_box" action='/answer' method="post">
+  <br>
+  <input id='box' type="text" name="answer">
+  <input type="hidden" name="question_id" value="<%= @question.id %>">
+  <br>
+  <input type="submit" value="Answer">
+ </form>
+ <br>
+
+ <a href='/users_home/<%= @user.id %>'>User home</a>
+ <br>
+ <a href="/">Home</a>
